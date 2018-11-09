@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <div class="row">
+
+    <div class="col-md-6 col-md-offset-3">
+      <h2>Agregar Usuario</h2>
+      <form method="post">
+        <p>Username</p>
+        <input type="text" class="form-control" name="username">
+        <br>
+        <p>Password</p>
+        <input type="password" class="form-control" name="password">
+        <br>
+        <p>Email</p>
+        <input type="email" class="form-control" name="email">
+        <br>
+      
+        <button type="submit">Guardar</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

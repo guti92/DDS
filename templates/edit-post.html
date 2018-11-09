@@ -1,0 +1,25 @@
+{% extends "index.html" %} 
+
+{% block content %} 
+
+  
+  <div class="row">
+
+    <div class="col-md-6 col-md-offset-3">
+      <form method="post">
+         <h2 id = "titulo4">Editar el post N°{{post.id}}</h2>
+        <p id = "titulo4">Titulo:</p>
+        <input value = "{{post.titulo}}" type="text" class="form-control" name="titulo">
+        <br>
+        <p id = "titulo4">Contenido:</p>
+        <textarea name="contenido" class="form-control" rows="5">{{post.contenido}}</textarea>
+        <br>
+        
+      
+        <button type="submit" class="btn btn-success">Guardar</button>
+      </form>
+    </div>
+  </div>
+   
+
+{% endblock %}

@@ -1,0 +1,75 @@
+html,
+body {
+	height: 100%;
+}
+
+body {
+	background: url(../images/fondoplaya.jpg) no-repeat center top;
+	<!--background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));-->
+	background-repeat: no-repeat;
+}
+
+.container{
+	padding-top: 10%;
+}
+
+
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+	background-color: #e6e6e6;
+	border-radius: 20px;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+	margin-bottom: 10px;
+}
+.form-signin .checkbox {
+	font-weight: normal;
+}
+.form-signin .form-control {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+		 -moz-box-sizing: border-box;
+					box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+}
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+
+.form-signin .fa-spin {
+	display: none;
+}
+
+#inputUsername {
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+#errorMsg {
+	display: block;
+	width: 100%;
+	text-align: center;
+	color: red;
+}
+.input-group {
+	padding: 10px 0;
+}
+
+.fa-stack{
+	margin-top: -100px;
+}
+
+.fa-inverse{
+	color: rgb(80, 132, 128);
+}
+

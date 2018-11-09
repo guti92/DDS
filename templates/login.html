@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Log in</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    
+    <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="//apis.google.com/js/platform.js?onload=start"> </script>
+    <!-- END PRE-REQUISITES FOR GOOGLE SIGN IN -->
+
+  </head>
+
+  <body>
+
+  <div class="container">
+    
+    <form method="post">
+      
+      <div class="form-signin">
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+          <input  name="username" class="form-control" type="text" placeholder="username" required autofocus>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+          <input  name="password" class="form-control" type="password" placeholder="Password" required autofocus>
+        </div>
+
+
+        <button class="btn btn-lg btn-primary btn-block" id="loginButton">Log in <i class="fa fa-spinner fa-spin fa-lg fa-fw"></i>
+        </button>
+
+
+        <br>
+        
+        <div id="result"></div>
+
+        <div id="errorMsg"></div>
+
+        <a href="/registrar" class="btn btn-primary">Registrarme</a>
+        {% if error%}
+        <h3>{{error}}</h3>
+        {% endif %}
+        <br>
+        <br>
+        <!-- GOOGLE PLUS SIGN IN-->
+        <div id="signInButton">
+          <span class="g-signin"
+            data-scope="openid email"
+            data-clientid="50903524732-eeh4coibqnelb1ir4i5v8eddsto0ust0.apps.googleusercontent.com"
+            data-redirecturi="postmessage"
+            data-accesstype="offline"
+            data-cookiepolicy="single_host_origin"
+            data-callback="signInCallback"
+            data-approvalprompt="force">
+          </span>
+        </div>
+
+      </div>
+
+      
+
+    </form>
+
+    <script>
+    function signInCallback(authResult) {
+      if (authResult['code']) {
+        $('#signinButton').attr('style', 'display: none');
+       
+        $.ajax({
+          type: 'POST',
+          url: '/gconnect?state={{STATE}}',
+          processData: false,
+          data: authResult['code'],
+          contentType: 'application/octet-stream; charset=utf-8',
+          success: function(result) {
+            // Handle or verify the server response if necessary.
+            if (result) {
+              $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+              setTimeout(function() {
+                window.location.href = "/";
+              }, 4000);
+            }else if (authResult['error']) {
+               console.log('There was an error: ' + authResult['error']);
+            }else {
+              $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+            }
+          }
+        }); 
+      } 
+    }
+    </script>
+    <!--END GOOGLE PLUS SIGN IN -->
+
+
+  </div> <!-- /container -->
+
+
+  <!-- jQuery -->
+  <script src="/static/js/jquery.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="/static/js/bootstrap.min.js"></script>
+  <!-- Custom Theme Scripts -->
+  <script src="/static/js/custom.min.js"></script>
+
+  </body>
+</html>

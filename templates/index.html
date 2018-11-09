@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bachata</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <!-- media query -->
+    <link href="{{ url_for('static', filename='css/over600.css') }}" media="screen and (min-width:500px)" rel="stylesheet" media="screen and (min-width:500px)">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+    
+</head>
+
+<body>
+  <div class="container">
+   <header>
+      <div class="container">
+        <div class="main row">
+          <div class="col-md-3">
+            <img src="{{ url_for('static', filename='images/bs.png') }}" alt="Logo" title="Logo" height="150">
+          </div>
+          <div class="col-md-9">
+            <h1 align="right"> Bachata Sensual</h1> 
+            <h2 align="right"> Dance first, think later.</h2>
+          </div>
+        </div>
+         <hr>
+      </div>
+
+
+    </header>
+    
+    <div class="bienvenida row">
+      <div class="col-md-9">
+        <h3>Bienvenido {{username}}</h3>
+        <h4>Si ya asististe a algún evento bachatero o si deseas hacerlo, por favor, inicia sesión y dejanos tu comentario. Te responderemos a la brevedad. </h4>
+      </div>
+      <div class="col-md-3 text-right login">
+        {% if username %}
+          <a href="/logout" class="btn btn-primary">Logout</a>
+          
+        {% else %}
+          <a href="/login" class="btn btn-primary">Login</a>
+        {% endif %}
+      </div>
+    </div>
+
+     <div class="row">
+        
+          {% block content %}
+          {% endblock %}
+          
+        
+      </div>
+
+  </div>
+
+  
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+{% extends "index.html" %} 
+
+{% block content %} 
+
+  
+  <div class="row text-center">
+    <h2>¿Esta seguro que quiere borrar este Post?</h2>
+  </div>
+  <div class="row post">
+      <div class="col-md-6">
+        <h4>{{post.titulo}}</h4>
+      </div>
+      <div class="col-md-6 text-right">
+        <h5>Fecha de Creación: {{post.fecha_creacion}}</h5>
+      </div>
+      <div class="col-md-12">
+        <p>{{post.contenido}}</p>
+      </div>
+        
+    </div>
+
+  <br>
+ 
+  <form action="/blog/eliminar/{{post.id}}" method = 'post'>
+    <button type="submit" class="btn btn-danger" id="submit" type="submit">Yes</button>
+    <a class="btn btn-primary" href="/" role="button">No</a>
+  </form>  
+ 
+  
+
+{% endblock %}
+
+
